@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Para Ale — Nuestro primer año ❤️</title>
+<style>
+:root{--pink:#f3a6c7;--rose:#d96b9d;--night:#090711;--ink:#fff8fc;--muted:#d9cbd7}
+*{box-sizing:border-box}body{margin:0;background:#090711;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.page{min-height:100vh;background:linear-gradient(180deg,#0a0711,#17101e);position:relative;overflow:hidden}
+.stars{position:absolute;inset:0;pointer-events:none;opacity:.65;background-image:radial-gradient(circle at 12% 18%,#fff 0 1px,transparent 1.8px),radial-gradient(circle at 80% 14%,#fff 0 1px,transparent 1.8px),radial-gradient(circle at 42% 32%,#fff 0 1px,transparent 1.8px),radial-gradient(circle at 91% 45%,#fff 0 1px,transparent 1.8px),radial-gradient(circle at 18% 65%,#fff 0 1px,transparent 1.8px),radial-gradient(circle at 67% 74%,#fff 0 1px,transparent 1.8px)}
+.screen{position:relative;z-index:2;min-height:100vh;padding:40px 18px;display:flex;align-items:center;justify-content:center;text-align:center}
+.content{width:100%;max-width:650px}.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--pink);font-weight:800}
+h1{font-size:clamp(2.5rem,11vw,5rem);line-height:.98;margin:12px 0 18px;letter-spacing:-.04em}
+h2{font-size:clamp(1.8rem,7vw,2.8rem);margin:8px 0 14px}
+p{color:var(--muted);line-height:1.7;margin:10px 0}.heart{font-size:3.5rem;animation:float 3s ease-in-out infinite}
+.btn{border:0;border-radius:999px;background:var(--pink);color:#24131e;font-weight:850;padding:14px 27px;min-height:50px;margin-top:20px;cursor:pointer;font-size:1rem}
+.btn:focus{outline:3px solid white;outline-offset:3px}.hidden{display:none!important}
+.player{margin:22px auto 4px;padding:18px;border:1px solid #f3a6c740;border-radius:18px;background:#ffffff0b}
+audio{width:100%;margin-top:10px}.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}
+.month{min-height:70px;border:1px solid #f3a6c733;border-radius:15px;background:#ffffff0b;color:white;padding:10px 5px;cursor:pointer;font-weight:750}
+.month span{display:block;color:var(--pink);font-size:.72rem;margin-bottom:4px}
+.memory{margin:18px 0;padding:20px;border-radius:20px;background:#ffffff0f;border:1px solid #f3a6c733;min-height:100px}
+.memory strong{color:white}.future{display:grid;gap:10px;text-align:left;margin:22px 0}
+.future div{padding:15px 16px;border-left:3px solid var(--pink);background:#ffffff0b;border-radius:0 14px 14px 0;color:#eee}
+.date{font-size:.85rem;color:#bcaebc;margin-top:20px}
+@keyframes float{50%{transform:translateY(-8px)}}@media(max-width:430px){.timeline{grid-template-columns:repeat(3,1fr)}}
+@media(prefers-reduced-motion:reduce){.heart{animation:none}}
+</style>
+</head>
+<body>
+<div class="page"><div class="stars"></div><section class="screen"><div class="content">
+
+<section id="welcome">
+<div class="heart">❤️</div><div class="eyebrow">Una página hecha para vos</div>
+<h1>Para Alejandra</h1><p style="font-size:1.2rem;color:#fff">Nuestro primer año</p>
+<div class="player">
+<small>🎵 Nuestra canción</small>
+<p style="margin:4px 0;color:#fff;font-weight:700">Let It Burn — Chris Grey</p>
+<p style="font-size:.88rem">Agregá tu archivo de audio abajo para que suene al darle Play.</p>
+<input id="audioFile" type="file" accept="audio/*" style="max-width:100%;margin:8px 0;color:#fff">
+<audio id="audio" controls class="hidden"></audio>
+<br><button class="btn" id="play">▶ PLAY</button>
+</div></section>
+
+<section id="journey" class="hidden">
+<div class="eyebrow">11/09/2025 → 11/09/2026</div><h2>Un año de nosotros ❤️</h2>
+<p>Hace un año comenzó algo que terminó convirtiéndose en una parte enorme de mi vida.</p>
+<button class="btn" id="begin">🌌 Entrar</button>
+</section>
+
+<section id="world" class="hidden">
+<div class="eyebrow">Nuestro mundo</div><h2>Todo empezó con una historia</h2>
+<p>Y esta página es un pequeño lugar para guardar una parte de ella.</p>
+<div class="timeline" id="months"></div>
+<div class="memory" id="memory"><strong>Elegí un mes ❤️</strong><p>Hay algo esperando en cada parte de nuestro primer año.</p></div>
+<button class="btn" id="futureBtn">🌅 Ver lo que viene</button>
+</section>
+
+<section id="future" class="hidden">
+<div class="eyebrow">Todavía falta mucho por vivir</div><h2>Nuestro próximo capítulo 🌅</h2>
+<p>No quiero que este sea el final de nuestra historia. Quiero que sea solamente el primer capítulo.</p>
+<div class="future">
+<div>🫂 Nuestro primer abrazo después de tanta distancia.</div>
+<div>📸 Nuestra primera foto juntos de verdad.</div>
+<div>🌎 Conocer lugares juntos.</div>
+<div>😂 Reírnos de todas las cosas que todavía nos quedan por vivir.</div>
+<div>❤️ Llegar a otro aniversario y mirar todo lo que construimos.</div>
+</div>
+<button class="btn" id="finalBtn">❤️ Hay una última cosa</button>
+</section>
+
+<section id="final" class="hidden">
+<div class="heart">❤️</div><div class="eyebrow">Para vos, Ale</div><h2>Feliz primer año</h2>
+<p>Gracias por cada llamada, cada risa, cada charla, cada noche juntos desde lejos y por todos los momentos que hicieron especial este año.</p>
+<p style="color:#fff;font-size:1.12rem;font-weight:700">Hace un año te elegí. Hoy te volvería a elegir.</p>
+<p style="color:var(--pink);font-size:1.35rem;font-weight:850">Y quiero seguir eligiéndote. ❤️</p>
+<p class="date">11 de septiembre de 2025 — 11 de septiembre de 2026</p>
+<div class="player"><small>🎙️ Mensaje final</small><p>Acá podés agregar tu audio y reemplazar este texto por tu mensaje.</p></div>
+</section>
+
+</div></section></div>
+<script>
+const $=s=>document.querySelector(s);
+const sections=["welcome","journey","world","future","final"].map(id=>$("#"+id));
+function show(id){sections.forEach(x=>x.classList.add("hidden"));$("#"+id).classList.remove("hidden");window.scrollTo(0,0)}
+
+const audioFile=$("#audioFile"),audio=$("#audio");
+audioFile.addEventListener("change",()=>{
+ const f=audioFile.files[0]; if(!f)return;
+ audio.src=URL.createObjectURL(f);audio.classList.remove("hidden");
+});
+$("#play").addEventListener("click",()=>{
+ if(audio.src) audio.play().catch(()=>{});
+ show("journey");
+});
+$("#begin").addEventListener("click",()=>show("world"));
+
+const months=["Septiembre","Octubre","Noviembre","Diciembre","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"];
+const texts=[
+"El comienzo de nuestro primer año. ❤️","Otro mes sumando momentos juntos. 🫶",
+"Seguimos eligiéndonos.","Más llamadas, más risas y más nosotros.",
+"Un nuevo año empezó, pero nosotros seguimos.","Un mes más de esta historia.",
+"Otro pedacito de nuestra vida juntos.","Seguimos acá, incluso con la distancia.",
+"Cada momento con vos cuenta.","Ya faltaba poquito para nuestro primer año.",
+"Un mes lleno de momentos para recordar.","Y llegamos al último mes antes de cumplir un año. ❤️"
+];
+const box=$("#months");
+months.forEach((m,i)=>{
+ const b=document.createElement("button");b.type="button";b.className="month";
+ b.innerHTML="<span>"+String(i+1).padStart(2,"0")+"</span>"+m;
+ b.addEventListener("click",()=>$("#memory").innerHTML="<strong>"+m+" ❤️</strong><p>"+texts[i]+"</p>");
+ box.appendChild(b);
+});
+$("#futureBtn").addEventListener("click",()=>show("future"));
+$("#finalBtn").addEventListener("click",()=>show("final"));
+</script>
+</body>
+</html>
