@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Una misión para Ale ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #fff0f6, #f8d9ff);
+      color: #4a2340;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 30px;
+      padding: 30px 24px;
+      box-shadow: 0 15px 50px rgba(120,40,90,0.18);
+      text-align: center;
+      position: relative;
+    }
+
+    .heart {
+      font-size: 65px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    h1 {
+      font-size: 30px;
+      margin: 15px 0 10px;
+    }
+
+    h2 {
+      font-size: 23px;
+      margin: 15px 0;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .subtitle {
+      color: #87506f;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 16px;
+      background: #e95b9f;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      background: #d94b90;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .secondary {
+      background: #f2c3dc;
+      color: #5a2947;
+    }
+
+    .secondary:hover {
+      background: #eab0d0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .progress {
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #9a5d80;
+      font-weight: bold;
+    }
+
+    .question {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .feedback {
+      min-height: 25px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .correct {
+      color: #35a46a;
+    }
+
+    .wrong {
+      color: #d34d6e;
+    }
+
+    .final-message {
+      background: #fff0f7;
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 20px;
+      border: 2px solid #f3bdd8;
+    }
+
+    .big {
+      font-size: 45px;
+    }
+
+    .choice-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 22px;
+      pointer-events: none;
+      animation: floatUp 5s linear forwards;
+      z-index: -1;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- INICIO -->
+  <section id="start">
+    <div class="heart">💗</div>
+
+    <h1>Una misión para vos, Ale</h1>
+
+    <p class="subtitle">
+      Preparé algo especialmente para vos...
+    </p>
+
+    <p>
+      Vas a tener que responder preguntas, tomar algunas decisiones
+      y llegar hasta el final para descubrir tu sorpresa. 👀❤️
+    </p>
+
+    <button onclick="startGame()">
+      Empezar la misión ✨
+    </button>
+  </section>
+
+
+  <!-- JUEGO -->
+  <section id="game" class="hidden">
+
+    <div class="progress" id="progress"></div>
+
+    <div class="question" id="question"></div>
+
+    <div id="answers" class="choice-grid"></div>
+
+    <div id="feedback" class="feedback"></div>
+
+  </section>
+
+
+  <!-- FINAL -->
+  <section id="final" class="hidden">
+
+    <div class="big">💞</div>
+
+    <h1>¡Misión completada!</h1>
+
+    <p>
+      Llegaste hasta el final, Ale.
+    </p>
+
+    <div class="final-message">
+
+      <h2>💌 Para vos</h2>
+
+      <p>
+        No importa la distancia, las pantallas ni los kilómetros.
+        Siempre voy a encontrar una forma de hacerte sentir lo mucho
+        que te amo.
+      </p>
+
+      <p>
+        Gracias por formar parte de mi vida y por todos los momentos
+        que vivimos juntos.
+      </p>
+
+      <p>
+        Y esto recién es el comienzo de nuestra historia. ❤️
+      </p>
+
+      <h2>👶❤️ Nuestro sueño</h2>
+
+      <p>
+        Algún día queremos cumplir nuestro sueño:
+        formar nuestra familia y tener un bebé.
+      </p>
+
+      <p>
+        Pero antes nos quedan muchísimas aventuras por vivir juntos.
+        🥹❤️
+      </p>
+
+      <h2>Te amo, Ale ❤️</h2>
+
+    </div>
+
+    <button onclick="restartGame()">
+      Jugar otra vez 🔄
+    </button>
+
+  </section>
+
+</div>
+
+
+<script>
+
+  const questions = [
+
+    {
+      question: "¿Qué somos nosotros? ❤️",
+      answers: [
+        "Dos desconocidos 😐",
+        "Una pareja ❤️",
+        "Compañeros de juego 🎮",
+        "Dos NPC 😂"
+      ],
+      correct: 1
+    },
+
+    {
+      question: "¿Qué día del mes celebramos nuestro aniversario? 📅",
+      answers: [
+        "5",
+        "11",
+        "22",
+        "30"
+      ],
+      correct: 1
+    },
+
+    {
+      question: "¿Qué hacemos muchas veces aunque estemos lejos? 📱",
+      answers: [
+        "Dormimos en llamada ❤️",
+        "Vamos al cine juntos 🎬",
+        "Salimos a caminar 🚶",
+        "Cocinamos juntos 🍝"
+      ],
+      correct: 0
+    },
+
+    {
+      question: "¿Cuál es nuestro sueño? 👀❤️",
+      answers: [
+        "Comprar una mansión 🏠",
+        "Ser famosos ⭐",
+        "Tener un bebé 👶❤️",
+        "Viajar a la Luna 🚀"
+      ],
+      correct: 2
+    },
+
+    {
+      question: "Si pudiéramos vernos ahora mismo, ¿qué sería lo primero que quiero hacer? 🥹",
+      answers: [
+        "Jugar Free Fire 🎮",
+        "Darte un abrazo ❤️",
+        "Dormir 😴",
+        "Irme corriendo 😂"
+      ],
+      correct: 1
+    },
+
+    {
+      question: "¿Qué es lo más importante en nuestra relación?",
+      answers: [
+        "La distancia",
+        "Los juegos",
+        "El amor y estar juntos ❤️",
+        "Quién gana las discusiones 😂"
+      ],
+      correct: 2
+    },
+
+    {
+      question: "¿Qué preferiría hacer contigo una noche?",
+      answers: [
+        "Ver una película juntos 🎬",
+        "Dormir sin hablar 😴",
+        "Ignorarte 😂",
+        "Jugar toda la noche 🎮"
+      ],
+      correct: 0
+    },
+
+    {
+      question: "¿Qué quiero hacer algún día cuando podamos estar juntos?",
+      answers: [
+        "Crear recuerdos juntos ❤️",
+        "No salir nunca 😂",
+        "Jugar 24 horas",
+        "Desaparecer misteriosamente 👻"
+      ],
+      correct: 0
+    },
+
+    {
+      question: "Pregunta importante... ¿quién preparó este juego? 👀",
+      answers: [
+        "Un hacker 🤨",
+        "Un NPC 🤖",
+        "Tu novio ❤️",
+        "Google 😂"
+      ],
+      correct: 2
+    },
+
+    {
+      question: "Última pregunta... ¿qué quiero seguir haciendo contigo?",
+      answers: [
+        "Seguir construyendo nuestra historia ❤️",
+        "Dejar todo 😂",
+        "Jugar solamente",
+        "Nada 😐"
+      ],
+      correct: 0
+    }
+
+  ];
+
+
+  let currentQuestion = 0;
+
+
+  function startGame() {
+
+    document.getElementById("start").classList.add("hidden");
+
+    document.getElementById("game").classList.remove("hidden");
+
+    currentQuestion = 0;
+
+    showQuestion();
+
+  }
+
+
+  function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("progress").textContent =
+      "Prueba " + (currentQuestion + 1) +
+      " de " + questions.length;
+
+    document.getElementById("question").textContent =
+      q.question;
+
+    const answers = document.getElementById("answers");
+
+    answers.innerHTML = "";
+
+    document.getElementById("feedback").textContent = "";
+
+    q.answers.forEach((answer, index) => {
+
+      const button = document.createElement("button");
+
+      button.textContent = answer;
+
+      button.onclick = function() {
+        chooseAnswer(index);
+      };
+
+      answers.appendChild(button);
+
+    });
+
+  }
+
+
+  function chooseAnswer(index) {
+
+    const q = questions[currentQuestion];
+
+    const feedback = document.getElementById("feedback");
+
+    if (index !== q.correct) {
+
+      feedback.textContent =
+        "Casi 😭 Pensalo otra vez...";
+
+      feedback.className = "feedback wrong";
+
+      return;
+
+    }
+
+
+    feedback.textContent =
+      "¡Correcto! ❤️";
+
+    feedback.className =
+      "feedback correct";
+
+
+    const buttons =
+      document.querySelectorAll("#answers button");
+
+    buttons.forEach(button => {
+      button.disabled = true;
+    });
+
+
+    createHearts();
+
+
+    setTimeout(() => {
+
+      currentQuestion++;
+
+      if (currentQuestion >= questions.length) {
+
+        document.getElementById("game")
+          .classList.add("hidden");
+
+        document.getElementById("final")
+          .classList.remove("hidden");
+
+        createHearts();
+
+      } else {
+
+        showQuestion();
+
+      }
+
+    }, 800);
+
+  }
+
+
+  function restartGame() {
+
+    document.getElementById("final")
+      .classList.add("hidden");
+
+    document.getElementById("game")
+      .classList.remove("hidden");
+
+    currentQuestion = 0;
+
+    showQuestion();
+
+  }
+
+
+  function createHearts() {
+
+    for (let i = 0; i < 4; i++) {
+
+      const heart =
+        document.createElement("div");
+
+      heart.className =
+        "floating-heart";
+
+      heart.textContent =
+        Math.random() > 0.5 ? "❤️" : "💗";
+
+      heart.style.left =
+        Math.random() * 100 + "%";
+
+      heart.style.animationDuration =
+        (3 + Math.random() * 3) + "s";
+
+      document.body.appendChild(heart);
+
+
+      setTimeout(() => {
+
+        heart.remove();
+
+      }, 6000);
+
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
